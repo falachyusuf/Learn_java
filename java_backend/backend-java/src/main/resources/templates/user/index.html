@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test View</title>
+</head>
+<body>
+    <Table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "user: ${users}">
+                <td th:text = "${user.id}"></td>
+                <td th:text = "${user.email}"></td>
+                <td th:text = "${user.password}"></td>
+                <td>
+                    <a th:href="@{/user/form/{id}(id=${user.id})}"><Button>Edit</Button></a>
+                    <form method="post" th:action="@{/user/delete/{id}(id=${user.id})}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </Table>
+</body>
+</html>

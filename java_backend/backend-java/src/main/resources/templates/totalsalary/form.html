@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form method="POST" th:action=@{/totalsalary/save}>
+        <div>
+            <input type="hidden" th:field="${totalsalary.id}">
+            <select name="base salary" th:field="${totalsalary.salary}">
+                <option value="" disabled selected>Select salary</option>
+                <option th:each="salaryOption: ${salaryOptions}" th:value="${salaryOption.id}" th:text="${salaryOption.baseSalary}"></option>
+            </select>
+            <select name="employee name" th:field="${totalsalary.employee}">
+                <option value="" disabled selected>Select employee</option>
+                <option th:each="employeeOption: ${employeeOptions}" th:value="${employeeOption.id}" th:text="${employeeOption.name}"></option>
+            </select>
+            <button type="submit">Entry Data</button>
+        </div>
+    </form>
+</body>
+</html>

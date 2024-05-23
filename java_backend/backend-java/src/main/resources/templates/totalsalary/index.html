@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test View</title>
+</head>
+<body>
+    <Table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Total Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <a th:href="@{/totalsalary/form}"><button>Print total salary</button></a>
+            <tr th:each = "Totalsalary: ${totalsalaries}">
+                <td th:text = "${Totalsalary.id}"></td>
+                <td th:text = "${Totalsalary.totalSalary}"></td>
+            </tr>
+        </tbody>
+    </Table>
+</body>
+</html>

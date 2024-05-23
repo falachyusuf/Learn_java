@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test View</title>
+</head>
+<body>
+    <a th:href="@{/position/form}"><button>Masukkan data</button></a>
+    <Table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "position: ${positions}">
+                <td th:text = "${position.id}"></td>
+                <td th:text = "${position.name}"></td>
+                <td th:text = "${position.level}"></td>
+                <td>
+                    <a th:href="@{/position/form/{id}(id=${position.id})}"><button>Edit</button></a>
+                    <form method="post" th:action="@{/position/delete/{id}(id=${position.id})}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </Table>
+</body>
+</html>

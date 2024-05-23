@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test View</title>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <a th:href="@{/departement/form}"><button>Masukkan data departement</button></a>
+        <tr th:each="departement: ${departements}">
+          <td th:text="${departement.id}"></td>
+          <td th:text="${departement.name}"></td>
+          <td>
+            <a th:href="@{/departement/form/{id}(id=${departement.id})}"><button>Edit</button></a>
+            <form method="post" th:action="@{/departement/delete/{id}(id=${departement.id})}">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

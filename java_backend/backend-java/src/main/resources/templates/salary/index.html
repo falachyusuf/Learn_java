@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test View</title>
+</head>
+<body>
+    <Table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Base Salary</th>
+                <th>Bonus</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <a th:href="@{/salary/form}"><button>Masukkan data salary</button></a>
+            <tr th:each = "salary: ${salaries}">
+                <td th:text = "${salary.id}"></td>
+                <td th:text = "${salary.baseSalary}"></td>
+                <td th:text = "${salary.bonus}"></td>
+                <td>
+                    <a th:href="@{/salary/form/{id}(id=${salary.id})}"><button>Edit</button></a>
+                    <form method="post" th:action="@{/salary/delete/{id}(id=${salary.id})}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </Table>
+</body>
+</html>

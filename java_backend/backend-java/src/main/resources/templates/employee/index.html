@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test View</title>
+</head>
+<body>
+    <a th:href="@{/employee/form}"><button>Masukkan data pekerja</button></a>
+    <Table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Identity Number</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Employee Status</th>
+                <th>Position Name</th>
+                <th>Position Level</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each = "employee: ${employees}">
+                <td th:text = "${employee.id}"></td>
+                <td th:text = "${employee.name}"></td>
+                <td th:text = "${employee.identityNumber}"></td>
+                <td th:text = "${employee.phoneNumber}"></td>
+                <td th:text = "${employee.address}"></td>
+                <td th:text = "${employee.gender}"></td>
+                <td th:text = "${employee.employeeStatus}"></td>
+                <td th:text = "${employee.position.name}"></td>
+                <td th:text = "${employee.position.level}"></td>
+                <td>
+                    <a th:href="@{/employee/form/{id}(id=${employee.id})}"><button>Edit</button></a>
+                    <form method="post" th:action="@{/employee/delete/{id}(id=${employee.id})}">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </Table>
+</body>
+</html>

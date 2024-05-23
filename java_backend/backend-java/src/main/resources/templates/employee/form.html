@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee form</title>
+</head>
+<body>
+    <form method="POST" th:action=@{/employee/save}>
+        <div>
+            <input type="hidden" placeholder="employee id" th:field="${employee.id}">
+            <input placeholder="employee name" th:field="${employee.name}">
+            <input placeholder="employee identity number" th:field="${employee.identityNumber}">
+            <input placeholder="employee phone number" th:field="${employee.phoneNumber}">
+            <input placeholder="employee address" th:field="${employee.address}">
+            <input placeholder="employee gender" th:field="${employee.gender}">
+            <input placeholder="employee status" th:field="${employee.employeeStatus}">
+            <select name="departement name" th:field="${employee.departement}">
+                <option value="" disabled selected>Select departement</option>
+                <option th:each="departementOption: ${departementOptions}" th:value="${departementOption.id}" th:text="${departementOption.name}"></option>
+            </select>
+            <select name="position name" th:field="${employee.position}">
+                <option value="" disabled selected>Select position</option>
+                <option th:each="positionOption: ${positionOptions}" th:value="${positionOption.id}" th:text="${positionOption.name}"></option>
+            </select>
+
+            <button type="submit">Entry Data</button>
+        </div>
+    </form>
+</body>
+</html>
